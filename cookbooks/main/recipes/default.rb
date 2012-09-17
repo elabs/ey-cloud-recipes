@@ -8,9 +8,9 @@
 # require_recipe "authorized_keys"
 # require_recipe "eybackup_slave"
 
-require_recipe "redis-yml"
+# require_recipe "redis-yml"
 require_recipe "sidekiq"
-require_recipe "redis"
+# require_recipe "redis"
 
 # require_recipe "logrotate"
 
