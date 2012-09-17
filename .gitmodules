@@ -1,3 +1,0 @@
-[submodule "cookbooks/sidekiq"]
-	path = cookbooks/sidekiq
-	url = git://github.com/elabs/eycloud-recipe-sidekiq.git
