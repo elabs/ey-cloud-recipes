@@ -41,7 +41,7 @@ package yasm_package do
 end
 
 # Filter the packages that we just built from source via their compile flag
-flags_for_upgrade = node[:ffmpeg][:compile_flags].reject do |flag| 
+flags_for_upgrade = node[:ffmpeg_compile_flags].reject do |flag| 
   ["--enable-libx264", "--enable-libvpx"].include?(flag)
 end
 
@@ -52,8 +52,8 @@ find_prerequisite_packages_by_flags(flags_for_upgrade).each do |pkg|
 end
 
 git "#{Chef::Config[:file_cache_path]}/ffmpeg" do
-  repository node[:ffmpeg][:git_repository]
-  reference node[:ffmpeg][:git_revision]
+  repository node[:ffmpeg_git_repository]
+  reference node[:ffmpeg_git_revision]
   action :sync
   notifies :run, "bash[compile_ffmpeg]"
 end
@@ -66,7 +66,7 @@ template "#{Chef::Config[:file_cache_path]}/ffmpeg-compiled_with_flags" do
   group "root"
   mode 0600
   variables(
-    :compile_flags => node[:ffmpeg][:compile_flags]
+    :compile_flags => node[:ffmpeg_compile_flags]
   )
   notifies :run, "bash[compile_ffmpeg]"
 end
@@ -74,8 +74,8 @@ end
 bash "compile_ffmpeg" do
   cwd "#{Chef::Config[:file_cache_path]}/ffmpeg"
   code <<-EOH
-    ./configure --prefix=#{node[:ffmpeg][:prefix]} #{node[:ffmpeg][:compile_flags].join(' ')}
+    ./configure --prefix=#{node[:ffmpeg_prefix]} #{node[:ffmpeg_compile_flags].join(' ')}
     make clean && make && make install
   EOH
-  creates "#{node[:ffmpeg][:prefix]}/bin/ffmpeg"
+  creates "#{node[:ffmpeg_prefix]}/bin/ffmpeg"
 end
