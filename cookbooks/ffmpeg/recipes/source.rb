@@ -19,7 +19,6 @@
 # limitations under the License.
 #
 
-include_recipe "build-essential"
 include_recipe "git"
 
 ffmpeg_packages.each do |pkg|
