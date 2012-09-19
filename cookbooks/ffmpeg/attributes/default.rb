@@ -19,10 +19,10 @@
 # limitations under the License.
 #
 
-node[:ffmpeg][:install_method] = :source
-node[:ffmpeg][:prefix] = "/usr/local"
-node[:ffmpeg][:git_repository] = "git://git.videolan.org/ffmpeg.git"
-node[:ffmpeg][:compile_flags] = [
+ffmpeg_install_method(:source)
+ffmpeg_prefix("/usr/local")
+ffmpeg_git_repository("git://git.videolan.org/ffmpeg.git")
+ffmpeg_compile_flags([
   "--disable-debug",
   "--enable-pthreads",
   "--enable-nonfree",
@@ -36,8 +36,28 @@ node[:ffmpeg][:compile_flags] = [
   "--enable-libvpx",
   "--enable-libxvid",
   "--enable-libfaad"
-]
+])
+
+# default[:ffmpeg][:install_method] = :source
+# default[:ffmpeg][:prefix] = "/usr/local"
+# default[:ffmpeg][:git_repository] = "git://git.videolan.org/ffmpeg.git"
+# default[:ffmpeg][:compile_flags] = [
+#   "--disable-debug",
+#   "--enable-pthreads",
+#   "--enable-nonfree",
+#   "--enable-gpl",
+#   "--disable-indev=jack",
+#   "--enable-libx264",
+#   "--enable-libfaac",
+#   "--enable-libmp3lame",
+#   "--enable-libtheora",
+#   "--enable-libvorbis",
+#   "--enable-libvpx",
+#   "--enable-libxvid",
+#   "--enable-libfaad"
+# ]
 
 # JW 07-06-11: Hash of commit or a HEAD should be used - not a tag. Sync action of Git
 # provider will always attempt to update the git clone if a tag is used.
-node[:ffmpeg][:git_revision]   = "39fe8033bbf94cac7935d749849fdf67ba8fc16a" # tag n0.11.1
+ffmpeg_git_revision("39fe8033bbf94cac7935d749849fdf67ba8fc16a")
+# default[:ffmpeg][:git_revision]   = "39fe8033bbf94cac7935d749849fdf67ba8fc16a" # tag n0.11.1
