@@ -10,7 +10,6 @@
 
 # require_recipe "redis-yml"
 require_recipe "sidekiq"
-require_recipe "ffmpeg"
 # require_recipe "redis"
 
 # require_recipe "logrotate"
