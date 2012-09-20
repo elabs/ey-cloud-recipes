@@ -4,7 +4,7 @@
 #
 
 remote_file "/usr/local/bin/ffmpeg" do
-  source "https://s3.amazonaws.com/shotbox-development-us/ffmpeg/ffmpeg_static-0.11.2"
+  source "https://s3.amazonaws.com/shotbox-shared/ffmpeg/ffmpeg"
   checksum "4aab0e9a4834af2073e8a17edb0cdc0c"
   mode 0755
   owner "root"
@@ -12,7 +12,7 @@ remote_file "/usr/local/bin/ffmpeg" do
 end
 
 remote_file "/usr/local/share/ffmpeg_share.tar.gz" do
-  source "https://s3.amazonaws.com/shotbox-development-us/ffmpeg/ffmpeg_share.tar.gz"
+  source "https://s3.amazonaws.com/shotbox-shared/ffmpeg/ffmpeg_share.tar.gz"
   checksum "660b74c2bacd178becf8676d7d597d1f"
   mode 0755
   owner "root"
