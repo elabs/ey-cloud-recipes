@@ -4,7 +4,7 @@
 #
 
 remote_file "/usr/local/bin/ffmpeg" do
-  source "https://s3.amazonaws.com/shotbox-shared/ffmpeg/ffmpeg"
+  source "https://s3.amazonaws.com/shotbox-shared/ffmpeg/ffmpeg_static-0.11.2"
   checksum "4aab0e9a4834af2073e8a17edb0cdc0c"
   mode 0755
   owner "root"
